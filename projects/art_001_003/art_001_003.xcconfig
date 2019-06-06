@@ -1,0 +1,29 @@
+//
+//  art_001_003.xcconfig
+//  art_001_003
+//
+//  Created by Jaime Rios on 2019-06-2.
+//  Copyright © 2019 Jaime Rios. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+LIBS_DIR=$PROJECT_DIR/lib
+
+// Microsoft CPP Rest SDK installed using Homebrew
+CASABLANCA_HDR=/usr/local/Cellar/cpprestsdk/2.10.13/include
+CASABLANCA_LIB=/usr/local/Cellar/cpprestsdk/2.10.13/lib
+
+// Boost and OpenSSL, in this instance, used setup scripts in scripts folder
+BOOST_HDR=$LIBS_DIR/boost/
+OPENSSL_HDR=$LIBS_DIR/openssl/include
+BOOST_LIB=$LIBS_DIR/boost/lib/mac/intel/a/lib
+OPENSSL_LIB=$LIBS_DIR/openssl/lib
+
+
+OTHER_CPLUSPLUSFLAGS= -isystem $CASABLANCA_HDR -isystem $BOOST_HDR -isystem $OPENSSL_HDR
+
+OTHER_LDFLAGS= -L$CASABLANCA_LIB -lcpprest.2.10 -L$OPENSSL_LIB -lssl -lcrypto -L$BOOST_LIB -lboost_chrono-clang-darwin100-mt-x64-1_69 -lboost_thread-clang-darwin100-mt-x64-1_69
+
+CLANG_CXX_LANGUAGE_STANDARD = c++17
